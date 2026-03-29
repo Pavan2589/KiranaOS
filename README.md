@@ -1,4 +1,5 @@
 # KiranaOS 🔗 - Connecting Kiranas to Quick Commerce
+Link: https://youtu.be/xx2NpMPpA9M
 
 **Empower 12 million kirana stores to compete with dark stores by routing orders directly to them through a single plug-and-play operating platform.**
 
