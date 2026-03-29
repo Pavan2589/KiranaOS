@@ -3,13 +3,12 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import api from '../utils/api'
 
-// Lavender / Lynq theme
 const THEME = {
-  primary:      '#7C3AED',   // violet-600
-  primaryLight: '#EDE9FE',   // violet-100
-  primaryDark:  '#5B21B6',   // violet-800
-  accent:       '#A78BFA',   // violet-400
-  gradient:     'linear-gradient(135deg, #7C3AED 0%, #5B21B6 100%)',
+  primary:      '#0C831F',
+  primaryLight: '#E8F5E9',
+  primaryDark:  '#08681A',
+  accent:       '#34A853',
+  gradient:     'linear-gradient(135deg, #0C831F 0%, #08681A 100%)',
 }
 
 const ROLE_CONFIG = {
@@ -39,12 +38,12 @@ const ROLE_CONFIG = {
 const iStyle = {
   width: '100%',
   padding: '11px 14px',
-  border: '1.5px solid #DDD6FE',
+  border: '1.5px solid #BBF7D0',
   borderRadius: 10,
   fontSize: 14,
   outline: 'none',
   fontFamily: 'Nunito, sans-serif',
-  background: '#FDFCFF',
+  background: '#FAFFFE',
   color: '#1C1C1E',
   transition: 'border-color 0.2s, box-shadow 0.2s',
 }
@@ -52,7 +51,7 @@ const iStyle = {
 const labelStyle = {
   fontSize: 12,
   fontWeight: 700,
-  color: '#5B21B6',
+  color: '#08681A',
   marginBottom: 4,
   display: 'block',
   letterSpacing: 0.3,
@@ -83,7 +82,7 @@ export default function AuthPage() {
     e.target.style.boxShadow = `0 0 0 3px ${THEME.primaryLight}`
   }
   function blurInput(e) {
-    e.target.style.borderColor = '#DDD6FE'
+    e.target.style.borderColor = '#BBF7D0'
     e.target.style.boxShadow = 'none'
   }
 
@@ -102,7 +101,7 @@ export default function AuthPage() {
   return (
     <div style={{
       minHeight: '100vh',
-      background: 'linear-gradient(135deg, #F5F3FF 0%, #EDE9FE 50%, #DDD6FE 100%)',
+      background: 'linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 50%, #BBF7D0 100%)',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -115,12 +114,12 @@ export default function AuthPage() {
         padding: '36px 40px',
         width: '100%',
         maxWidth: 460,
-        boxShadow: '0 20px 60px rgba(124,58,237,0.15)',
-        border: '1px solid #EDE9FE',
+        boxShadow: '0 20px 60px rgba(12,131,31,0.12)',
+        border: '1px solid #D1FAE5',
       }}>
 
         {/* Back link */}
-        <button onClick={() => navigate('/')} style={{ background: 'none', border: 'none', color: '#7C3AED', fontSize: 13, fontWeight: 700, cursor: 'pointer', marginBottom: 24, display: 'flex', alignItems: 'center', gap: 5, padding: 0 }}>
+        <button onClick={() => navigate('/')} style={{ background: 'none', border: 'none', color: THEME.primary, fontSize: 13, fontWeight: 700, cursor: 'pointer', marginBottom: 24, display: 'flex', alignItems: 'center', gap: 5, padding: 0 }}>
           ← Back to home
         </button>
 
@@ -130,7 +129,7 @@ export default function AuthPage() {
             width: 56, height: 56, borderRadius: 16,
             background: THEME.gradient,
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            fontSize: 26, margin: '0 auto 12px', boxShadow: '0 4px 16px rgba(124,58,237,0.3)'
+            fontSize: 26, margin: '0 auto 12px', boxShadow: '0 4px 16px rgba(12,131,31,0.3)'
           }}>
             {cfg.icon}
           </div>
@@ -143,7 +142,7 @@ export default function AuthPage() {
         </div>
 
         {/* Role tabs */}
-        <div style={{ display: 'flex', background: '#F5F3FF', borderRadius: 10, padding: 3, marginBottom: 20, gap: 2 }}>
+        <div style={{ display: 'flex', background: '#F0FDF4', borderRadius: 10, padding: 3, marginBottom: 20, gap: 2 }}>
           {Object.entries(ROLE_CONFIG).map(([r, c]) => (
             <button key={r} onClick={() => { navigate(`/auth/${r}`); setError('') }}
               style={{
@@ -152,7 +151,7 @@ export default function AuthPage() {
                 cursor: 'pointer', transition: 'all 0.15s',
                 background: role === r ? '#fff' : 'transparent',
                 color: role === r ? THEME.primary : '#9CA3AF',
-                boxShadow: role === r ? '0 1px 6px rgba(124,58,237,0.15)' : 'none',
+                boxShadow: role === r ? '0 1px 6px rgba(12,131,31,0.15)' : 'none',
               }}>
               {c.icon} {c.label}
             </button>
@@ -160,7 +159,7 @@ export default function AuthPage() {
         </div>
 
         {/* Login / Register toggle */}
-        <div style={{ display: 'flex', background: '#F5F3FF', borderRadius: 10, padding: 3, marginBottom: 24 }}>
+        <div style={{ display: 'flex', background: '#F0FDF4', borderRadius: 10, padding: 3, marginBottom: 24 }}>
           {['login', 'register'].map(m => (
             <button key={m} onClick={() => { setMode(m); setError('') }}
               style={{
@@ -169,7 +168,7 @@ export default function AuthPage() {
                 cursor: 'pointer', transition: 'all 0.2s',
                 background: mode === m ? THEME.gradient : 'transparent',
                 color: mode === m ? '#fff' : '#9CA3AF',
-                boxShadow: mode === m ? '0 2px 10px rgba(124,58,237,0.3)' : 'none',
+                boxShadow: mode === m ? '0 2px 10px rgba(12,131,31,0.3)' : 'none',
               }}>
               {m === 'login' ? 'Log In' : 'Register'}
             </button>
@@ -179,7 +178,7 @@ export default function AuthPage() {
         {/* Demo credentials hint (login only) */}
         {mode === 'login' && (
           <div style={{
-            background: '#F5F3FF', border: '1px solid #DDD6FE',
+            background: '#F0FDF4', border: '1px solid #BBF7D0',
             borderRadius: 10, padding: '10px 14px', marginBottom: 20,
             display: 'flex', alignItems: 'center', justifyContent: 'space-between'
           }}>
@@ -284,11 +283,11 @@ export default function AuthPage() {
 
           <button type="submit" disabled={loading} style={{
             width: '100%', marginTop: 22, padding: '13px',
-            background: loading ? '#C4B5FD' : THEME.gradient,
+            background: loading ? '#86EFAC' : THEME.gradient,
             color: '#fff', border: 'none', borderRadius: 12,
             fontWeight: 800, fontSize: 15, cursor: loading ? 'not-allowed' : 'pointer',
             fontFamily: 'Nunito, sans-serif',
-            boxShadow: loading ? 'none' : '0 4px 20px rgba(124,58,237,0.4)',
+            boxShadow: loading ? 'none' : '0 4px 20px rgba(12,131,31,0.35)',
             transition: 'all 0.2s',
           }}>
             {loading ? '⏳ Please wait…' : mode === 'login' ? `Sign In →` : `Create Account →`}
@@ -304,12 +303,12 @@ export default function AuthPage() {
         </div>
 
         {/* Branding */}
-        <div style={{ textAlign: 'center', marginTop: 28, paddingTop: 20, borderTop: '1px solid #F3F0FF' }}>
+        <div style={{ textAlign: 'center', marginTop: 28, paddingTop: 20, borderTop: '1px solid #E8F5E9' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}>
-            <div style={{ width: 20, height: 20, borderRadius: 6, background: THEME.gradient, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 11 }}>⚡</div>
-            <span style={{ fontWeight: 900, fontSize: 15, color: THEME.primary, letterSpacing: -0.5 }}>Lynq</span>
+            <div style={{ width: 20, height: 20, borderRadius: 6, background: THEME.gradient, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 11 }}>🏪</div>
+            <span style={{ fontWeight: 900, fontSize: 15, color: THEME.primary, letterSpacing: -0.5 }}>KiranaOS</span>
           </div>
-          <div style={{ fontSize: 11, color: '#C4B5FD', marginTop: 3 }}>Hyperlocal delivery platform</div>
+          <div style={{ fontSize: 11, color: THEME.accent, marginTop: 3, opacity: 0.8 }}>Hyperlocal kirana delivery</div>
         </div>
       </div>
     </div>
