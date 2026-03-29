@@ -1,4 +1,4 @@
-# Lync 🔗 - Connecting Kiranas to Quick Commerce
+# KiranaOS 🔗 - Connecting Kiranas to Quick Commerce
 
 **Empower 12 million kirana stores to compete with dark stores by routing orders directly to them through a single plug-and-play operating platform.**
 
